@@ -1,0 +1,9 @@
+.main-carousel {
+  display: flex;
+  max-width: 300px;
+  overflow-x: scroll;
+}
+
+.item-carousel img {
+  width: 160px;
+}

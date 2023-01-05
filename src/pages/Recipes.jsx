@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, CardMedia, Link, Typography } from '@mui/material';
+import { AppBar, Box, Button, Card, CardContent, CardMedia, Link, Typography } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
@@ -88,9 +88,9 @@ function Recipe(props) {
   };
 
   return (
-    <Box height="100%" className="body-recipes">
+    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100%" className="body-recipes">
       <Header { ...props } />
-      <Box borderBottom=" 1px solid #D9D9D9" flexWrap="wrap" display="flex" justifyContent="center" gap={1} mt={10} className="header-recipes">
+      <Box width="100%" borderBottom=" 1px solid #D9D9D9" flexWrap="wrap" display="flex" justifyContent="center" gap={1} mt={7} className="header-recipes">
         {/* <Container
           sx={{
             marginTop: 10,

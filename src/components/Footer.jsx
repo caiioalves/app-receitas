@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Link } from '@mui/material';
+import { AppBar, Box, IconButton, Link } from '@mui/material';
 import React from 'react';
 import WineBarIcon from '@mui/icons-material/WineBar';
 // import { Link } from 'react-router-dom';
@@ -8,36 +8,40 @@ import LocalDiningIcon from '@mui/icons-material/LocalDining';
 
 function Footer() {
   return (
-    <AppBar
-      color='others'
+    <Box
+      bgcolor='#F27457'
       position="fixed"
       sx={{
-        backdropFilter: 'blur(10px)',
+        // backdropFilter: 'blur(10px)',
         borderTopLeftRadius: 50,
         borderTopRightRadius: 50,
-        display: 'flex',
+        display: { xs: 'flex', md: 'none' },
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 1 ,
+        // alignItems: 'center',
+        // padding: 1 ,
+        // width: '50%',
+        width: '90%',
         top: 'auto',
-        bottom: 0 
+        bottom: 0,
+        boxShadow: '0px -1px 5px black'
       }}
       data-testid="footer">
       <Link href="/drinks" >
         {/* <img alt="drinks" data-testid="drinks-bottom-btn" src={ drinkIcon } /> */}
         {/* <PersonIcon/> */}
         <IconButton sx={{ marginLeft: 5 }}>
-          <WineBarIcon sx={{ fontSize: 40 }}/>
+          <WineBarIcon/>
         </IconButton>
       </Link>
       <Link href="/foods">
         {/* <img alt="foods" data-testid="food-bottom-btn" src={ mealIcon } /> */}
         <IconButton sx={{ marginRight: 5 }} >
-          <LocalDiningIcon sx={{ fontSize: 40 }}/>
+          <LocalDiningIcon/>
         </IconButton>
       </Link>
       {/* <PersonIcon/> */}
-    </AppBar>
+    </Box>
   );
 }
 

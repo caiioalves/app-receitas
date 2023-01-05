@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Card, CardContent, CardMedia, Link, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, CardMedia, Link, Typography } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';

@@ -1,4 +1,4 @@
-import { AppBar, Box, IconButton, Link } from '@mui/material';
+import { Box, IconButton, Link } from '@mui/material';
 import React from 'react';
 import WineBarIcon from '@mui/icons-material/WineBar';
 // import { Link } from 'react-router-dom';

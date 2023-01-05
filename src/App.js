@@ -1,6 +1,8 @@
+import { ThemeProvider } from '@mui/material';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import { Tema } from './components/Tema';
 import CardProvider from './context/CardProvider';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
@@ -12,6 +14,7 @@ import Recipe from './pages/Recipes';
 
 function App() {
   return (
+    <ThemeProvider theme={Tema}>
     <Switch>
       <Route exact path="/" component={ Login } />
       <CardProvider>
@@ -26,6 +29,7 @@ function App() {
         <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
       </CardProvider>
     </Switch>
+    </ThemeProvider>
   );
 }
 

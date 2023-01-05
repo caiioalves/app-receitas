@@ -1,7 +1,7 @@
+import { Box, Button, InputBase } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import cardContext from '../context/cardContext';
-import './css/SearchBar.css';
 
 function SearchBar({ history }) {
   const {
@@ -96,24 +96,28 @@ function SearchBar({ history }) {
   }, [recipe, type, history]);
 
   return (
-    <div className="search">
-      <header>
-        <div className="search-input">
-          <input
-            type="text"
+    <Box className="search">
+        <Box display="flex" justifyContent="center" className="search-input">
+          <InputBase
+            placeholder="Pesquisar"
+
+            sx={{ paddingLeft: 1,textAlign: 'center', border: '1px solid black', borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
             value={ textSearch }
             onChange={ ({ target }) => setTextSearch(target.value) }
             data-testid="search-input"
           />
-          <button
+          <Button
+            sx={{ borderRadius: 0, padding: 0.6, borderTopRightRadius: 10, borderBottomRightRadius: 10 }}
             type="button"
+            variant="contained"
+            color="black"
             data-testid="exec-search-btn"
             onClick={ handleClick }
           >
             Search
-          </button>
-        </div>
-        <div className="radio-item">
+          </Button>
+        </Box>
+        <Box display="flex" justifyContent="center" mt={1} mb={1} gap={2} className="radio-item">
           <label htmlFor="ingredient">
             <input
               id="ingredient"
@@ -144,9 +148,8 @@ function SearchBar({ history }) {
             />
             Letter
           </label>
-        </div>
-      </header>
-    </div>
+        </Box>
+    </Box>
   );
 }
 

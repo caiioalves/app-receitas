@@ -4,7 +4,6 @@ import { useLocation, useParams } from 'react-router-dom';
 import cardContext from '../context/cardContext';
 import favorite from '../images/blackHeartIcon.svg';
 import share from '../images/shareIcon.svg';
-import './css/ShareAndFavorite.css';
 import notFavorite from '../images/whiteHeartIcon.svg';
 
 function ShareAndFavorite() {

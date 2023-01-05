@@ -1,10 +1,10 @@
+import { AppBar, Box, IconButton, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import cardContext from '../context/cardContext';
-import profile from '../images/profileIcon.svg';
-import search from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
-import './css/Header.css';
+import PersonIcon from '@mui/icons-material/Person';
+import SearchIcon from '@mui/icons-material/Search';
 
 const contentsSearchIcon = ['foods', 'drinks'];
 
@@ -28,40 +28,44 @@ function Header(props) {
   }, [pathname, setType]);
 
   return (
-    <header className="container">
-      <div className="header">
-        <button
+    <AppBar
+      // sx={{ borderBottomRightRadius: 50, borderBottomLeftRadius: 50 }}
+      className="container">
+      <Box display="flex" justifyContent="space-between" padding={1} alignItems="center" className="header">
+        <IconButton
           className="button"
           type="button"
           onClick={ () => { history.push('/profile'); } }
           data-testid="btn-profile"
         >
-          <img
+          <PersonIcon sx={{ fontSize: 35 }}/>
+          {/* <Avatar
             className="img"
             src={ profile }
             alt=""
             data-testid="profile-top-btn"
-          />
-        </button>
-        <h3 data-testid="page-title">{title}</h3>
+          /> */}
+        </IconButton>
+        <Typography variant="h4" fontWeight="bold" data-testid="page-title">{title}</Typography>
         { searchIcon && (
-          <button
+          <IconButton
             className="button"
             type="button"
             onClick={ () => { setShowSearch((prev) => !prev); } }
             data-testid="btn-search"
           >
-            <img
+            <SearchIcon sx={{ fontSize: 35 }}/>
+            {/* <Avatar
               className="img"
               src={ search }
               alt=""
               data-testid="search-top-btn"
-            />
-          </button>
+            /> */}
+          </IconButton>
         )}
-      </div>
+      </Box>
       { showSearch && <SearchBar history={ history } /> }
-    </header>
+    </AppBar>
   );
 }
 

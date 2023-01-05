@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './css/Recommendations.css';
 
 function Recomendations({ recipesRecom }) {
   const { pathname } = useLocation();

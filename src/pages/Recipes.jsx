@@ -1,5 +1,7 @@
+import { Box, Button, Card, CardContent, CardMedia, Link, Typography } from '@mui/material';
+import { Container } from '@mui/system';
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import cardContext from '../context/cardContext';
@@ -84,52 +86,82 @@ function Recipe(props) {
   };
 
   return (
-    <div className="body-recipes">
+    <Box height="100%" className="body-recipes">
       <Header { ...props } />
-      <header className="header-recipes">
+      <Box borderBottom=" 1px solid #D9D9D9" flexWrap="wrap" display="flex" justifyContent="center" gap={1} mt={10} className="header-recipes">
+        {/* <Container
+          sx={{
+            marginTop: 10,
+            display: 'flex',
+            borderBlockEnd: 'solid',
+            justifyContent: 'center',
+            gap: 1,
+            whiteSpace: 'normal',
+            flexWrap: 'wrap',
+          // width: '50%'
+          }}
+        > */}
         {
           category !== null && category.length > 1 && category.map((item) => (
-            <button
+            <Button
+             color='black'
               key={ `${item.strCategory}-key` }
-              type="button"
+              // variant="contained"
               data-testid={ `${item.strCategory}-category-filter` }
               onClick={ toggleCategory }
             >
               { item.strCategory }
-            </button>
+            </Button>
           ))
         }
-        <button
+        <Button
           key="all"
-          type="button"
+          color='black'
+          // variant="contained"
           data-testid="All-category-filter"
           onClick={ () => {
             setFetched((prev) => !prev);
           } }
         >
           All
-        </button>
-      </header>
-      <section className="section-recipes">
+        </Button>
+        {/* </Container> */}
+      </Box>
+      <Box
+        padding={1}
+        mb={15}
+        mt={5}display="flex"
+        justifyContent="center"
+        // gap={10}
+        flexWrap='wrap'
+        className="section-recipes"
+        sx={{ gap: {xs: 5, sm: 5, md: 15} }}
+      >
         {
           recipe !== null && type === 'drinks'
           && recipe.map((rec, index) => (
             <Link
-              to={ `/${type}/${rec.idDrink}` }
+              underline="none"
+              href={ `/${type}/${rec.idDrink}` }
               data-testid={ `${index}-recipe-card` }
               key={ `${index}-recipe-card` }
             >
-              <div className="card-container">
-                <img
+              <Card sx={{ maxWidth: 345, textAlign: 'center', backgroundColor: '#F27457' }} className="card-container">
+                <CardMedia
+                  // width="200px"
+                  height="140"
+                  component="img"
                   data-testid={ `${index}-card-img` }
-                  src={ rec.strDrinkThumb }
-                  alt={ rec.strDrink }
+                  image={ rec.strDrinkThumb }
+                  title={ rec.strDrink }
                   className="hero"
                 />
-                <h3 data-testid={ `${index}-card-name` }>
-                  {rec.strDrink}
-                </h3>
-              </div>
+                 <CardContent>
+                  <Typography color="#f5f5f5" variant='h6' fontWeight="bold" data-testid={ `${index}-card-name` }>
+                    {rec.strDrink}
+                  </Typography>
+                </CardContent>
+              </Card>
             </Link>
           ))
         }
@@ -137,27 +169,32 @@ function Recipe(props) {
           recipe !== null && type === 'foods'
           && recipe.map((rec, index) => (
             <Link
-              to={ `/${type}/${rec.idMeal}` }
+              underline="none"
+              href={ `/${type}/${rec.idMeal}` }
               data-testid={ `${index}-recipe-card` }
               key={ `${index}-recipe-card` }
             >
-              <div className="card-container">
-                <img
+              <Card sx={{ maxWidth: 345, textAlign: 'center', backgroundColor: '#F27457' }} className="card-container">
+                <CardMedia
+                  height="140"
+                  component="img"
                   data-testid={ `${index}-card-img` }
-                  src={ rec.strMealThumb }
-                  alt={ rec.strMeal }
+                  image={ rec.strMealThumb }
+                  title={ rec.strMeal }
                   className="hero"
                 />
-                <h3 data-testid={ `${index}-card-name` }>
-                  {rec.strMeal}
-                </h3>
-              </div>
+                <CardContent>
+                  <Typography variant='h6' color="#f5f5f5" fontWeight="bold" data-testid={ `${index}-card-name` }>
+                    {rec.strMeal}
+                  </Typography>
+                </CardContent>
+              </Card>
             </Link>
           ))
         }
-      </section>
+      </Box>
       <Footer />
-    </div>);
+    </Box>);
 }
 
 export default Recipe;

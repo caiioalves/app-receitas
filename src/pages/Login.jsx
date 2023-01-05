@@ -1,4 +1,4 @@
-import { Box, Button, Card, Paper, TextField, ThemeProvider } from '@mui/material';
+import { Box, Button, Card, TextField, ThemeProvider } from '@mui/material';
 import { Stack } from '@mui/system';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -35,7 +35,12 @@ function Login() {
 
   return (
     <ThemeProvider theme={Tema}>
-    <Stack bgcolor="#F27457" alignItems="center" height="100vh" justifyContent="center" className="body">
+    <Stack
+      bgcolor="#F27457"
+      sx={{
+        background: 'radial-gradient(circle, rgba(242,116,87,1) 0%, rgba(255,159,28,1) 100%)'
+      }}
+      alignItems="center" height="100vh" justifyContent="center" className="body">
       <Card
         // elevation={3}
         sx={{

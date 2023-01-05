@@ -50,6 +50,7 @@ function SearchBar({ history }) {
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typeFilter, searchItem, type]);
 
   useEffect(() => {
@@ -79,6 +80,7 @@ function SearchBar({ history }) {
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typeFilter, searchItem, type]);
 
   useEffect(() => {

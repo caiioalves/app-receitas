@@ -1,5 +1,4 @@
 import { Box, Button, Card, CardContent, CardMedia, Link, Typography } from '@mui/material';
-import { Container } from '@mui/system';
 import React, { useContext, useEffect, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
@@ -26,6 +25,7 @@ function Recipe(props) {
       setTypeFilter('');
       setRecipe([]);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -55,6 +55,7 @@ function Recipe(props) {
       fetchData('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=', drinks);
       fechCategory('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list', drinks);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetched]);
 
   useEffect(() => {
@@ -74,7 +75,8 @@ function Recipe(props) {
       const drinks = 'drinks';
       fetchData(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${filtredCategory}`, drinks);
     }
-  }, [filtredCategory]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },  [filtredCategory]);
 
   const toggleCategory = ({ target }) => {
     const text = target.innerText;

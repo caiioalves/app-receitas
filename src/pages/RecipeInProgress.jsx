@@ -23,6 +23,7 @@ function RecipeInProgress() {
         cocktails: { [id]: [] },
         meals: { [id]: [] } }));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -71,6 +72,7 @@ function RecipeInProgress() {
     if (type === 'drinks') {
       fetchApi(drinkEndpoint, 'drinks');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const enableBtn = () => {
@@ -93,6 +95,7 @@ function RecipeInProgress() {
 
   useEffect(() => {
     enableBtn();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [local, contextListIngredients]);
 
   const handleClick = ({ target }) => {

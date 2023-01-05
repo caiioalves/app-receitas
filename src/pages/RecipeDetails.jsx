@@ -53,6 +53,7 @@ function RecipesDetails() {
     if (type === 'drinks') {
       fetchApi(drinkEndpoint, 'drinks');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -70,6 +71,7 @@ function RecipesDetails() {
     if (type === 'drinks') {
       fetchRecom('https://www.themealdb.com/api/json/v1/1/search.php?s=', 'meals');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -85,6 +87,7 @@ function RecipesDetails() {
       const drinkData = Object.keys(data.cocktails).includes(id);
       if (drinkData) setStartContinue('Continue Recipe');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleClick = () => {
     history.push(`/${type}/${id}/in-progress`);

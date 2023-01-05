@@ -30,6 +30,7 @@ function ShareAndFavorite() {
     if (filtredData !== undefined) {
       setFavorited(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipeDetail]);
 
   const favoriteRecipe = () => {

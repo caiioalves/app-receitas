@@ -1,8 +1,18 @@
+import { AppBar, Box, Button, List, ListItem, Paper, styled, Typography } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
 import Recomendations from '../components/Recommendations';
 import ShareAndFavorite from '../components/ShareAndFavorite';
 import cardContext from '../context/cardContext';
+
+const Video = styled('iframe')({
+  marginBottom: '5%',
+  border: 'none'
+});
+
+const Image = styled('img')({
+
+})
 
 function RecipesDetails() {
   const history = useHistory();
@@ -102,77 +112,114 @@ function RecipesDetails() {
   };
 
   return (
-    <div className="body-details">
+    <Box className="body-details">
       {location.pathname.includes('drink') ? (
-        <div className="details-container">
-          <div className="header-details">
-            <h1 data-testid="recipe-title">{recipe.strDrink}</h1>
+        <Box display="flex" flexDirection="column" alignItems="center" className="details-container">
+          <AppBar sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }} className="header-details">
+            <Typography variant="h4" fontWeight="bold" ml={1} data-testid="recipe-title">{recipe.strDrink}</Typography>
             <ShareAndFavorite />
-          </div>
-          <p data-testid="recipe-category">
+          </AppBar>
+          <Paper  sx={{ width: '60%', mt: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5  }}>
+          <Typography fontWeight="bold" color="#F27457" variant="h4" data-testid="recipe-category">
             {' '}
             {recipe.strAlcoholic}
-          </p>
-          <img
+          </Typography>
+          <Image
+            sx={{
+              width: '40%'
+            }}
             data-testid="recipe-photo"
             src={ recipe.strDrinkThumb }
             className="img-food"
             alt="imagem da receita"
           />
-          <p
+          <Typography
+            width="80%"
+            mb={5}
+            fontWeight="bold"
             className="instructions"
             data-testid="instructions"
           >
             {recipe.strInstructions}
-
-          </p>
-        </div>
+          </Typography>
+          </Paper>
+        </Box>
       ) : (
-        <div className="details-container">
-          <div className="header-details">
-            <h1 data-testid="recipe-title">{recipe.strMeal}</h1>
+        <Box display="flex" flexDirection="column" alignItems="center" className="details-container">
+          <AppBar
+            sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}
+            className="header-details">
+            <Typography variant="h4" fontWeight="bold" ml={1} data-testid="recipe-title">{recipe.strMeal}</Typography>
             <ShareAndFavorite />
-          </div>
-          <p data-testid="recipe-category">
+          </AppBar>
+          <Paper
+          sx={{ 
+            width: {xs: '90%', md: '60%'},
+            mt: 10, 
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 5 
+          }}>
+          <Typography fontWeight="bold" color="#F27457" variant="h4"  data-testid="recipe-category">
             {' '}
             {recipe.strCategory}
-          </p>
-          <img
+          </Typography>
+          <Image
+            sx={{
+              width:'40%'
+            }}
             data-testid="recipe-photo"
             src={ recipe.strMealThumb }
             className="img-food"
             alt="imagem da receita"
           />
-          <p
+          <Typography
+            width="80%"
+            fontWeight="bold"
             className="instructions"
             data-testid="instructions"
           >
             {recipe.strInstructions}
-
-          </p>
-          <iframe
+          </Typography>
+          <Video
             data-testid="video"
             src={ video }
             title="recipe video"
-          />
-        </div>
+            />
+          </Paper>
+        </Box>
       )}
-      <div className="list">
-        <ul>
+      <Box display="flex" flexDirection="column" alignItems="center">
+      <Paper sx={{width: {xs: '90%', md: '60%'}, mt: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5  }} className="list">
+        <Typography color="#F27457" fontWeight="bold" variant='h4' sx={{ mt: 5 }}>
+          Ingredients
+        </Typography>
+        <List sx={{ mb: 3 }}>
           {Array.isArray(ingredients) && ingredients.map((ingredient, index) => (
             (ingredient !== 'null - null' || ingredient !== '-')
           && (
-            <li
+            <ListItem
+              sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold' }}
               key={ index }
               data-testid={ `${index}-ingredient-name-and-measure` }
             >
               {ingredient}
-            </li>
+            </ListItem>
           )
           ))}
-        </ul>
-      </div>
+        </List>
+        <Button sx={{mb: 5}} variant='contained'
+          className="start"
+          type="button"
+          data-testid="start-recipe-btn"
+          onClick={ handleClick }
+        >
+          { startContinue }
+        </Button>
+      </Paper>
       { recipeRecom.length > 1 && <Recomendations recipesRecom={ recipeRecom } />}
+      </Box>
       <div className="start-content">
         <button
           className="start"
@@ -183,7 +230,7 @@ function RecipesDetails() {
           { startContinue }
         </button>
       </div>
-    </div>
+    </Box>
   );
 }
 

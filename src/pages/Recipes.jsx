@@ -151,7 +151,7 @@ function Recipe(props) {
               <Card sx={{ maxWidth: 345, textAlign: 'center', backgroundColor: '#F27457' }} className="card-container">
                 <CardMedia
                   // width="200px"
-                  height="140"
+                  height="120"
                   component="img"
                   data-testid={ `${index}-card-img` }
                   image={ rec.strDrinkThumb }
@@ -178,7 +178,7 @@ function Recipe(props) {
             >
               <Card sx={{ maxWidth: 345, textAlign: 'center', backgroundColor: '#F27457' }} className="card-container">
                 <CardMedia
-                  height="140"
+                  height="130"
                   component="img"
                   data-testid={ `${index}-card-img` }
                   image={ rec.strMealThumb }

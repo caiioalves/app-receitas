@@ -50,9 +50,6 @@ function Header(props) {
         </IconButton>
         <Typography variant="h5" fontWeight="bold" data-testid="page-title">{title}</Typography>
         <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center" >
-        <IconButton sx={{ display: { xs: 'none', md: 'flex' } }} onClick={() => setOpen(true)}>
-          <MenuIcon/>
-        </IconButton>
         { searchIcon && (
           <IconButton
             className="button"
@@ -69,6 +66,9 @@ function Header(props) {
             /> */}
           </IconButton>
         )}
+        <IconButton sx={{ display: { xs: 'none', md: 'flex' } }} onClick={() => setOpen(true)}>
+          <MenuIcon/>
+        </IconButton>
         <Menu
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"

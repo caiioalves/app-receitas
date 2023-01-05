@@ -1,10 +1,13 @@
+import { Box, IconButton } from '@mui/material';
 import clipboardCopy from 'clipboard-copy';
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import cardContext from '../context/cardContext';
 import favorite from '../images/blackHeartIcon.svg';
-import share from '../images/shareIcon.svg';
 import notFavorite from '../images/whiteHeartIcon.svg';
+import ShareIcon from '@mui/icons-material/Share';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 function ShareAndFavorite() {
   const { id } = useParams();
@@ -79,45 +82,48 @@ function ShareAndFavorite() {
   };
 
   return (
-    <div className="buttons">
+    <Box className="buttons">
       {
         !favorited
           && (
-            <button
+            <IconButton
               className="button-fav"
               src={ notFavorite }
               type="button"
               data-testid="favorite-btn"
               onClick={ favoriteRecipe }
             >
-              <img src={ notFavorite } alt="favorite" />
-            </button>
+              <FavoriteIcon/>
+              {/* <img src={ notFavorite } alt="favorite" /> */}
+            </IconButton>
           )
       }
       {
         favorited
           && (
-            <button
+            <IconButton
               src={ favorite }
               className="button-fav"
               type="button"
               data-testid="favorite-btn"
               onClick={ notFavoriteRecipe }
             >
-              <img src={ favorite } alt="favorite" />
-            </button>
+              <FavoriteBorderIcon/>
+              {/* <img src={ favorite } alt="favorite" /> */}
+            </IconButton>
           )
       }
-      <button
+      <IconButton
         type="button"
         className="button-fav"
         data-testid="share-btn"
         onClick={ handleClick }
       >
-        <img src={ share } alt="share" />
-      </button>
+        <ShareIcon/>
+        {/* <img src={ share } alt="share" /> */}
+      </IconButton>
       { copied && <span>Link copied!</span>}
-    </div>
+    </Box>
   );
 }
 

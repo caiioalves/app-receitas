@@ -1,7 +1,15 @@
+import { AppBar, Box, Button, Checkbox, Paper, styled, Typography } from '@mui/material';
+import { padding } from '@mui/system';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
 import ShareAndFavorite from '../components/ShareAndFavorite';
 import cardContext from '../context/cardContext';
+
+
+
+const Image = styled('img')({
+
+})
 
 function RecipeInProgress() {
   const history = useHistory();
@@ -132,23 +140,35 @@ function RecipeInProgress() {
   };
 
   return (
-    <div>
-      <h1 data-testid="recipe-title">
+    <Box display="flex" justifyContent="center">
+      <AppBar sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+      <Typography ml={1} variant="h4" data-testid="recipe-title">
         {type === 'foods' ? recipeDetail.strMeal : recipeDetail.strDrink}
-      </h1>
+      </Typography>
       <ShareAndFavorite />
-      <img
+      </AppBar>
+      <Paper 
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems:  'center',
+        width: '80%',
+        mt: 10,
+        mb: 5
+      }}>
+      <Image
+        sx={{ width: '30%', mt: 5, mb: 5 }}
         className="hero"
         data-testid="recipe-photo"
         src={ type === 'foods' ? recipeDetail.strMealThumb : recipeDetail.strDrinkThumb }
         alt={ type === 'foods' ? recipeDetail.strMeal : recipeDetail.strDrink }
       />
-      <p data-testid="recipe-category" />
+      <Typography data-testid="recipe-category" />
       { contextListIngredients.length > 0 && type === 'drinks'
       && contextListIngredients.map((item, index) => (
-        <div key={ index }>
+        <Box key={ index }>
           <label htmlFor={ index } data-testid={ `${index}-ingredient-step` }>
-            <input
+            <Checkbox
               id={ index }
               type="checkbox"
               value={ item.ingredient }
@@ -159,13 +179,13 @@ function RecipeInProgress() {
             />
             {item.ingredient}
           </label>
-        </div>
+        </Box>
       ))}
       { contextListIngredients.length > 0 && type === 'foods'
       && contextListIngredients.map((item, index) => (
-        <div key={ index }>
+        <Box key={ index }>
           <label htmlFor={ index } data-testid={ `${index}-ingredient-step` }>
-            <input
+            <Checkbox
               id={ index }
               type="checkbox"
               value={ item.ingredient }
@@ -176,23 +196,25 @@ function RecipeInProgress() {
             />
             {item.ingredient}
           </label>
-        </div>
+        </Box>
       ))}
-      <p data-testid="instructions">
+      <Typography width="80%" mt={5} data-testid="instructions">
         { recipeDetail.strInstructions }
-      </p>
-      <div className="start-content">
-        <button
+      </Typography>
+      <Box className="start-content">
+        <Button
+          sx={{mb:5, mt: 5}}
           className="start"
-          type="button"
+          variant="contained"
           data-testid="finish-recipe-btn"
           disabled={ !disabledBtn }
           onClick={ () => history.push('/done-recipes') }
         >
           Finalizar
-        </button>
-      </div>
-    </div>
+        </Button>
+      </Box>
+      </Paper>
+    </Box>
   );
 }
 

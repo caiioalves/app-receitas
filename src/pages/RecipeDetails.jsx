@@ -220,16 +220,6 @@ function RecipesDetails() {
       </Paper>
       { recipeRecom.length > 1 && <Recomendations recipesRecom={ recipeRecom } />}
       </Box>
-      <div className="start-content">
-        <button
-          className="start"
-          type="button"
-          data-testid="start-recipe-btn"
-          onClick={ handleClick }
-        >
-          { startContinue }
-        </button>
-      </div>
     </Box>
   );
 }

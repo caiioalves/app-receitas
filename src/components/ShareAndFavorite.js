@@ -1,10 +1,8 @@
-import { Box, IconButton } from '@mui/material';
+import { Alert, Box, IconButton, Snackbar } from '@mui/material';
 import clipboardCopy from 'clipboard-copy';
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import cardContext from '../context/cardContext';
-import favorite from '../images/blackHeartIcon.svg';
-import notFavorite from '../images/whiteHeartIcon.svg';
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -20,7 +18,7 @@ function ShareAndFavorite() {
   const handleClick = () => {
     const newPathname = pathname.replace('/in-progress', '');
     console.log(newPathname, pathname);
-    clipboardCopy(`http://localhost:3000${newPathname}`);
+    clipboardCopy(`https://caio-receitas.vercel.app${newPathname}`);
     setCopied(true);
   };
 
@@ -88,13 +86,11 @@ function ShareAndFavorite() {
           && (
             <IconButton
               className="button-fav"
-              src={ notFavorite }
               type="button"
               data-testid="favorite-btn"
               onClick={ favoriteRecipe }
             >
               <FavoriteIcon/>
-              {/* <img src={ notFavorite } alt="favorite" /> */}
             </IconButton>
           )
       }
@@ -102,14 +98,12 @@ function ShareAndFavorite() {
         favorited
           && (
             <IconButton
-              src={ favorite }
               className="button-fav"
               type="button"
               data-testid="favorite-btn"
               onClick={ notFavoriteRecipe }
             >
               <FavoriteBorderIcon/>
-              {/* <img src={ favorite } alt="favorite" /> */}
             </IconButton>
           )
       }
@@ -120,9 +114,20 @@ function ShareAndFavorite() {
         onClick={ handleClick }
       >
         <ShareIcon/>
-        {/* <img src={ share } alt="share" /> */}
       </IconButton>
-      { copied && <span>Link copied!</span>}
+      { copied && (
+        <Snackbar
+          sx={{ mt: 5 }}
+          open={copied}
+          autoHideDuration={6000}
+          onClose={() => setCopied(false)}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+        >
+          <Alert onClose={() => setCopied(false)} severity="info" sx={{ width: '100%' }}>
+            Link Copied
+          </Alert>
+        </Snackbar>
+      )}
     </Box>
   );
 }

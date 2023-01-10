@@ -3,7 +3,7 @@ import { Stack } from '@mui/system';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Tema } from '../components/Tema';
-import logo from '../images/logo.png';
+import Logo from '../imagens/logo.png';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -42,7 +42,6 @@ function Login() {
       }}
       alignItems="center" height="100vh" justifyContent="center" className="body">
       <Card
-        // elevation={3}
         sx={{
           bgcolor: "#F2F2F2",
           padding: "5%",
@@ -53,7 +52,7 @@ function Login() {
         }}
       >
         <Box>
-          <img width="70" src={ logo } alt="" />
+          <img width="70" src={ Logo } alt="" />
         </Box>
         <Box
           sx={{
@@ -63,6 +62,7 @@ function Login() {
           }}
           className="inputs">
           <TextField
+            size="small"
             sx={{ mb: 2, mt: 6}}
             onChange={ handleChangeEmail }
             value={ email }
@@ -72,6 +72,7 @@ function Login() {
             label="Digite seu email"
           />
           <TextField
+            size="small"
             className="input"
             onChange={ handleChangePassword }
             value={ password }

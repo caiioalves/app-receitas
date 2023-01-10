@@ -1,4 +1,4 @@
-import { Box, Button, InputBase } from '@mui/material';
+import { Box, Button, Checkbox, InputBase } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import cardContext from '../context/cardContext';
@@ -102,9 +102,9 @@ function SearchBar({ history }) {
         <Box display="flex" justifyContent="center" className="search-input">
           <InputBase
             placeholder="Pesquisar"
-
-            sx={{ paddingLeft: 1,textAlign: 'center', border: '1px solid black', borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
+            sx={{ paddingLeft: 1,textAlign: 'center', border: '1px solid whitesmoke', borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
             value={ textSearch }
+            size="small"
             onChange={ ({ target }) => setTextSearch(target.value) }
             data-testid="search-input"
           />
@@ -112,6 +112,7 @@ function SearchBar({ history }) {
             sx={{ borderRadius: 0, padding: 0.6, borderTopRightRadius: 10, borderBottomRightRadius: 10 }}
             type="button"
             variant="contained"
+            size="small"
             color="black"
             data-testid="exec-search-btn"
             onClick={ handleClick }
@@ -119,11 +120,11 @@ function SearchBar({ history }) {
             Search
           </Button>
         </Box>
-        <Box display="flex" justifyContent="center" mt={1} mb={1} gap={2} className="radio-item">
+        <Box display="flex" justifyContent="center" alignItems="center" mt={1} mb={1} gap={2} className="radio-item">
           <label htmlFor="ingredient">
-            <input
+            <Checkbox
               id="ingredient"
-              type="radio"
+              color="success"
               name="search"
               data-testid="ingredient-search-radio"
               onClick={ () => setFilterType('ingredient') }
@@ -131,9 +132,10 @@ function SearchBar({ history }) {
             Ingredient
           </label>
           <label htmlFor="name">
-            <input
+            <Checkbox
+              color="success"
               id="name"
-              type="radio"
+              label="name"
               name="search"
               data-testid="name-search-radio"
               onClick={ () => setFilterType('name') }
@@ -141,9 +143,9 @@ function SearchBar({ history }) {
             Name
           </label>
           <label htmlFor="letter">
-            <input
+            <Checkbox
               id="letter"
-              type="radio"
+              color="success"
               name="search"
               data-testid="first-letter-search-radio"
               onClick={ () => setFilterType('letter') }

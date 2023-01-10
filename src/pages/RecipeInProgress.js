@@ -1,5 +1,4 @@
 import { AppBar, Box, Button, Checkbox, Paper, styled, Typography } from '@mui/material';
-import { padding } from '@mui/system';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
 import ShareAndFavorite from '../components/ShareAndFavorite';
@@ -208,7 +207,7 @@ function RecipeInProgress() {
           variant="contained"
           data-testid="finish-recipe-btn"
           disabled={ !disabledBtn }
-          onClick={ () => history.push('/done-recipes') }
+          onClick={ () => history.push('/foods') }
         >
           Finalizar
         </Button>
